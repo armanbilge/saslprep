@@ -8,7 +8,7 @@ ThisBuild / developers += tlGitHubDev("armanbilge", "Arman Bilge")
 ThisBuild / startYear := Some(2021)
 ThisBuild / tlSonatypeUseLegacyHost := false
 
-ThisBuild / crossScalaVersions := Seq("3.1.2", "2.12.15", "2.13.8")
+ThisBuild / crossScalaVersions := Seq("3.2.0-RC2", "2.12.15", "2.13.8")
 
 ThisBuild / githubWorkflowBuildPreamble +=
   WorkflowStep.Run(
@@ -19,7 +19,7 @@ ThisBuild / githubWorkflowBuildPreamble +=
 
 lazy val root = tlCrossRootProject.aggregate(saslprep)
 
-lazy val saslprep = crossProject(JVMPlatform, JSPlatform, NativePlatform)
+lazy val saslprep = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Pure)
   .in(file("saslprep"))
   .settings(
@@ -28,6 +28,6 @@ lazy val saslprep = crossProject(JVMPlatform, JSPlatform, NativePlatform)
       "org.scalameta" %%% "munit" % "1.0.0-M4" % Test
     )
   )
-  .platformsSettings(JVMPlatform, NativePlatform)(
+  .platformsSettings(JVMPlatform)(
     tlVersionIntroduced := List("2.12", "2.13", "3").map(_ -> "0.1.1").toMap
   )

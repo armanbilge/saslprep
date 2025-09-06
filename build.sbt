@@ -1,14 +1,13 @@
 name := "saslprep"
 
-ThisBuild / tlBaseVersion := "0.1"
+ThisBuild / tlBaseVersion := "0.2"
 
 ThisBuild / organization := "com.armanbilge"
 ThisBuild / organizationName := "Arman Bilge"
 ThisBuild / developers += tlGitHubDev("armanbilge", "Arman Bilge")
 ThisBuild / startYear := Some(2021)
-ThisBuild / tlSonatypeUseLegacyHost := false
 
-ThisBuild / crossScalaVersions := Seq("3.1.2", "2.12.15", "2.13.8")
+ThisBuild / crossScalaVersions := Seq("3.3.6", "2.12.20", "2.13.16")
 
 ThisBuild / githubWorkflowBuildPreamble +=
   WorkflowStep.Run(
@@ -24,10 +23,10 @@ lazy val saslprep = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .in(file("saslprep"))
   .settings(
     libraryDependencies ++= Seq(
-      "io.github.cquiroz" %%% "scala-java-locales" % "1.4.0",
-      "org.scalameta" %%% "munit" % "1.0.0-M4" % Test
+      "io.github.cquiroz" %%% "scala-java-locales" % "1.5.4",
+      "org.scalameta" %%% "munit" % "1.1.1" % Test
     )
   )
   .platformsSettings(JVMPlatform, NativePlatform)(
-    tlVersionIntroduced := List("2.12", "2.13", "3").map(_ -> "0.1.1").toMap
+    tlVersionIntroduced := List("2.12", "2.13", "3").map(_ -> "0.2.0").toMap
   )

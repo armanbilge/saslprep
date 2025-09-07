@@ -1,6 +1,6 @@
 name := "saslprep"
 
-ThisBuild / tlBaseVersion := "0.2"
+ThisBuild / tlBaseVersion := "0.1"
 
 ThisBuild / organization := "com.armanbilge"
 ThisBuild / organizationName := "Arman Bilge"
@@ -27,6 +27,9 @@ lazy val saslprep = crossProject(JVMPlatform, JSPlatform, NativePlatform)
       "org.scalameta" %%% "munit" % "1.1.1" % Test
     )
   )
-  .platformsSettings(JVMPlatform, NativePlatform)(
-    tlVersionIntroduced := List("2.12", "2.13", "3").map(_ -> "0.2.0").toMap
+  .jvmSettings(
+    tlVersionIntroduced := List("2.12", "2.13", "3").map(_ -> "0.1.1").toMap
+  )
+  .nativeSettings(
+    tlVersionIntroduced := List("2.12", "2.13", "3").map(_ -> "0.1.2").toMap
   )
